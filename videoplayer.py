@@ -7,9 +7,12 @@ import time
 import os
 import glob
 
-# vids = [ '/home/pi/Videos/kagami_siggraph2018.mp4',
-#          '/home/pi/Videos/SIGGRAPH2018_demo_1280x720.mp4' ]
-vids = glob.glob('/home/pi/Videos/*.*')
+try:
+    sys.path.append('/home/pi/Videos/')
+    from playlist import vids
+except ImportError:
+    vids = sorted(glob.glob('/home/pi/Videos/*.*'))
+
 
 pin_shutdown = 24
 pin_stop = 23
